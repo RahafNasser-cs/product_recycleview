@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/CS_ra/Downloads/product_recycleview/app/src/main/res/layout/activity_buy_mobile.xml" value="0.2175925925925926" />
-        <entry key="..\:/Users/CS_ra/Downloads/product_recycleview/app/src/main/res/layout/activity_main.xml" value="0.536" />
+        <entry key="..\:/Users/CS_ra/Downloads/product_recycleview/app/src/main/res/layout/activity_buy_mobile.xml" value="0.264" />
+        <entry key="..\:/Users/CS_ra/Downloads/product_recycleview/app/src/main/res/layout/activity_main.xml" value="0.46647230320699706" />
+        <entry key="..\:/Users/CS_ra/Downloads/product_recycleview/app/src/main/res/layout/fragment_buy_mobile.xml" value="0.25" />
+        <entry key="..\:/Users/CS_ra/Downloads/product_recycleview/app/src/main/res/layout/fragment_product_list.xml" value="0.25" />
         <entry key="..\:/Users/CS_ra/Downloads/product_recycleview/app/src/main/res/layout/list_item.xml" value="0.176" />
+        <entry key="..\:/Users/CS_ra/Downloads/product_recycleview/app/src/main/res/menu/layout.xml" value="0.25" />
+        <entry key="..\:/Users/CS_ra/Downloads/product_recycleview/app/src/main/res/menu/layout_menu.xml" value="0.25" />
       </map>
     </option>
   </component>

@@ -1,7 +1,6 @@
 package com.example.product_recycleview.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,15 +8,17 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.product_recycleview.BuyMobile
+import com.example.product_recycleview.ProductListFragmentDirections
 import com.example.product_recycleview.R
 import com.example.product_recycleview.model.Product
 
-class ItemAdapter(private val dataset: List<Product>,
-                  private val context: Context
-                  ): RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
-    class ItemViewHolder(val view: View): RecyclerView.ViewHolder(view){
+class ItemAdapter(
+    private val dataset: List<Product>,
+    private val context: Context
+) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
+    class ItemViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val mobileImage: ImageView = view.findViewById(R.id.mobile_image)
         val mobileName: TextView = view.findViewById(R.id.mobile_name)
         val mobilePrice: TextView = view.findViewById(R.id.moblie_price)
@@ -26,7 +27,8 @@ class ItemAdapter(private val dataset: List<Product>,
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val adapterLayout = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
+        val adapterLayout =
+            LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
         return ItemViewHolder(adapterLayout)
     }
 
@@ -39,14 +41,24 @@ class ItemAdapter(private val dataset: List<Product>,
         if (item.isVip)
             holder.mobileIsVIP.visibility = View.VISIBLE
 
-            holder.buyBtn.setOnClickListener{
-                if (item.quantityNumber != 0) {
-                    val intent = Intent(holder.view.context, BuyMobile::class.java)
-                    holder.view.context.startActivity(intent)
-                } else {
-                    Toast.makeText(holder.view.context, "The product is not available right now", Toast.LENGTH_LONG).show()
-                }
+        holder.buyBtn.setOnClickListener {
+            if (item.quantityNumber != 0) {
+                val action =
+                    ProductListFragmentDirections.actionProductListFragmentToBuyMobileFragment(
+                        item.imageResourceInt.toString(),
+                        context.resources.getString(item.name),
+                        context.resources.getString(item.price),
+                        context.resources.getString(item.url)
+                    )
+                holder.view.findNavController().navigate(action)
+            } else {
+                Toast.makeText(
+                    holder.view.context,
+                    "The product is not available right now",
+                    Toast.LENGTH_LONG
+                ).show()
             }
+        }
 
     }
 

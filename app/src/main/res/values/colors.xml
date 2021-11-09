@@ -11,5 +11,8 @@
     <color name="light">#d1c5c5</color>
     <color name="dark">	#8c7d7d</color>
     <color name="white_dark">#F5F1F1</color>
+    <color name="link_color">#00acee</color>
+
+
 
 </resources>
