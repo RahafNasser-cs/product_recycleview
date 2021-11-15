@@ -2,6 +2,8 @@ package com.example.product_recycleview
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,6 +37,10 @@ class ProductListFragment : Fragment() {
         recyclerView = binding!!.recyclerView
         //set layout linear
         setLayoutManager()
+        // To handle back system
+        requireActivity().onBackPressedDispatcher.addCallback {
+            Toast.makeText(requireContext(), "This is first page", Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onDestroy() {

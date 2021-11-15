@@ -3,15 +3,12 @@ package com.example.product_recycleview
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.activity.addCallback
+import androidx.navigation.fragment.findNavController
 import com.example.product_recycleview.databinding.FragmentBuyMobileBinding
 
 
@@ -32,6 +29,7 @@ class BuyMobileFragment : Fragment() {
             productUrl = it.getString(PRODUCTURL).toString()
         }
         setHasOptionsMenu(true)
+
     }
 
     override fun onCreateView(
@@ -50,6 +48,12 @@ class BuyMobileFragment : Fragment() {
         binding!!.moreInfoLink.setOnClickListener {
             gotoUrl(productUrl)
         }
+        // To handle back system
+        requireActivity().onBackPressedDispatcher.addCallback {
+            findNavController().navigateUp()
+        }
+
+
 
         //action bar
         // calling the action ba
@@ -66,6 +70,9 @@ class BuyMobileFragment : Fragment() {
         binding = null
     }
 
+
+
+
     fun gotoUrl(str: String) {
         val uri = Uri.parse(str)
         startActivity(Intent(Intent.ACTION_VIEW, uri))
@@ -77,6 +84,13 @@ class BuyMobileFragment : Fragment() {
         const val PRODUCTPRICE = "productPrice"
         const val PRODUCTURL = "ProducUrl"
     }
+
+//    override fun handleOnBackPressed() {
+//        TODO("Not yet implemented")
+//    }
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//    }
 //    override fun onContextItemSelected(item: MenuItem): Boolean {
 //        Log.e("BuyMobile","Item hom")
 //        if(item.getItemId()== android.R.id.home){
